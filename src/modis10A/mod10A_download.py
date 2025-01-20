@@ -20,10 +20,11 @@ aoi = shape(data["features"][0]["geometry"])
 
 client = Client.open("https://planetarycomputer.microsoft.com/api/stac/v1",modifier=planetary_computer.sign_inplace)
 item_search = client.search(
-   collections=["modis-10A1-061"],
-   max_items=40,
+    collections=["modis-10A1-061"],
+    max_items=40,
     datetime="2017/2018",
-      intersects=aoi
+    intersects=aoi,
+    query=["platform=terra"]
 )
 item_collection = item_search.item_collection()
 
